@@ -24,19 +24,19 @@ const contatos = [
         cidade: 'Sorocaba'
     },
     {
-        id: 1,
-        nome: 'Ana Maria Oliveira Dias',
-        celular: '11 9 7171-6464',
-        foto: './img/ana-oliveira-dias.png',
+        id: 2,
+        nome: 'Hugo Freitas',
+        celular: '11 9 7575-8888',
+        foto: './img/hugo-freitas.png',
         email: 'ana@gmail.com',
         endereco: 'Av. São Joaquim, 234',
         cidade: 'Sorocaba'
     },
     {
-        id: 2,
+        id: 3,
         nome: 'Fernando Leonid',
         celular: '11 9 1112-3333',
-        foto: './img/logo.png',
+        foto: './img/fernando-leonid.jpg',
         email: 'fernando@gmail.com',
         endereco: 'Rua dos padres, 555',
         cidade: 'Osasco'
@@ -73,7 +73,7 @@ function carregarCards(){
     const cards = contatos.map(criarCards)
     // replaceChildren => substitui todos os elementos filhos de um que já exite 
     container.replaceChildren(...cards)
-    
+
     //container.replaceChildren(cards[0], cards[1])
 
 }
