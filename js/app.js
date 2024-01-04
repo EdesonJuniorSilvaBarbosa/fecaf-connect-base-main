@@ -24,6 +24,15 @@ const contatos = [
         cidade: 'Sorocaba'
     },
     {
+        id: 1,
+        nome: 'Ana Maria Oliveira Dias',
+        celular: '11 9 7171-6464',
+        foto: './img/ana-oliveira-dias.png',
+        email: 'ana@gmail.com',
+        endereco: 'Av. São Joaquim, 234',
+        cidade: 'Sorocaba'
+    },
+    {
         id: 2,
         nome: 'Fernando Leonid',
         celular: '11 9 1112-3333',
@@ -59,8 +68,13 @@ function carregarCards(){
     const container = document.getElementById('card-container')
 
     // Inserindo na página HTML
-    container.appendChild(criarCards(contatos[0]))
-    container.appendChild(criarCards(contatos[1]))
+
+    // Metodo MAP => pecorre todo o array e retorna sempre um array do mesmo tamanho
+    const cards = contatos.map(criarCards)
+    // replaceChildren => substitui todos os elementos filhos de um que já exite 
+    container.replaceChildren(...cards)
+    
+    //container.replaceChildren(cards[0], cards[1])
 
 }
 
