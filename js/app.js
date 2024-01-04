@@ -35,18 +35,18 @@ const contatos = [
 ]
 
 // Criando os cards a partir do JavaScript
-function criarCards(){
+function criarCards(contato){
 
     const card = document.createElement('a')
     card.className = 'card'
     card.href = './pages/contato.html'
     
     card.innerHTML = 
-    `   <img src="./img/ana-oliveira-dias.png" alt="" class="card__image">
-        <h2 class="card_name">Ana Oliveira Dias</h2>
+    `   <img src="${contato.foto}" alt="" class="card__image">
+        <h2 class="card_name">${contato.nome}</h2>
         <div class="card__contact-phone">
         <i class="fas fa-mobile-alt contact-phone__icon"></i>
-        <p class="contact-phone__number">11 9 7171-6464</p>
+        <p class="contact-phone__number">${contato.celular}</p>
         </div>
         <div class="card__tag-color"></div>    
     `
@@ -59,14 +59,9 @@ function carregarCards(){
     const container = document.getElementById('card-container')
 
     // Inserindo na página HTML
-    for(let contador=1; contador<100; contador++){
-        container.appendChild(criarCards())
-    }
-    
-    // container.appendChild(criarCards())
-    // container.appendChild(criarCards())
-    // container.appendChild(criarCards())
-    // container.appendChild(criarCards())
+    container.appendChild(criarCards(contatos[0]))
+    container.appendChild(criarCards(contatos[1]))
+
 }
 
 carregarCards()
