@@ -59,14 +59,10 @@ function carregarCards(){
 
 }
 
-// Arrow function
-const limparLocalStorage = () => localStorage.clear()
 
 carregarCards()
 
-// Duas formas de limpar o local Storage
-document.getElementById('novo-contato').addEventListener('click', limparLocalStorage)
-//document.getElementById('novo-contato').addEventListener('click', () => localStorage.clear())
+document.getElementById('novo-contato').addEventListener('click', () => localStorage.clear())
 
 
 
