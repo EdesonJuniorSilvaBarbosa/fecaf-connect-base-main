@@ -1,18 +1,5 @@
 'user strict'
 
-// Estrutura antiga que era criada dentro do HTML
-{/* 
-<a class="card" href="./pages/contato.html">
-    <img src="./img/ana-oliveira-dias.png" alt="" class="card__image">
-    <h2 class="card_name">Ana Oliveira Dias</h2>
-    <div class="card__contact-phone">
-        <i class="fas fa-mobile-alt contact-phone__icon"></i>
-        <p class="contact-phone__number">11 9 7171-6464</p>
-    </div>
-    <div class="card__tag-color"></div>
-</a> 
-*/}
-
 const contatos = [
     {
         id: 1,
@@ -43,12 +30,12 @@ const contatos = [
     }
 ]
 
-// Criando os cards a partir do JavaScript
 function criarCards(contato){
 
     const card = document.createElement('a')
     card.className = 'card'
     card.href = './pages/contato.html'
+    card.onclick = () => localStorage.setItem('id', contato.id)
     
     card.innerHTML = 
     `   <img src="${contato.foto}" alt="" class="card__image">
@@ -62,26 +49,24 @@ function criarCards(contato){
     return card
 }
 
-// Carrega Cards
 function carregarCards(){
     
     const container = document.getElementById('card-container')
 
-    // Inserindo na página HTML
-
-    // Metodo MAP => pecorre todo o array e retorna sempre um array do mesmo tamanho
     const cards = contatos.map(criarCards)
-    // replaceChildren => substitui todos os elementos filhos de um que já exite 
-    container.replaceChildren(...cards)
 
-    //container.replaceChildren(cards[0], cards[1])
+    container.replaceChildren(...cards)
 
 }
 
+// Arrow function
+const limparLocalStorage = () => localStorage.clear()
+
 carregarCards()
 
-
-
+// Duas formas de limpar o local Storage
+document.getElementById('novo-contato').addEventListener('click', limparLocalStorage)
+//document.getElementById('novo-contato').addEventListener('click', () => localStorage.clear())
 
 
 
