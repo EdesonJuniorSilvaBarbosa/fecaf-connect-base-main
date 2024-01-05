@@ -1,11 +1,12 @@
 'user strict'
+import { preview } from "./preview.js"
 
 const contatos = [
     {
         id: 1,
         nome: 'Ana Maria Oliveira Dias',
         celular: '11 9 7171-6464',
-        foto: './img/ana-oliveira-dias.png',
+        foto: '../img/ana-oliveira-dias.png',
         email: 'ana@gmail.com',
         endereco: 'Av. São Joaquim, 234',
         cidade: 'Sorocaba'
@@ -14,7 +15,7 @@ const contatos = [
         id: 2,
         nome: 'Hugo Freitas',
         celular: '11 9 7575-8888',
-        foto: './img/hugo-freitas.png',
+        foto: '../img/hugo-freitas.png',
         email: 'ana@gmail.com',
         endereco: 'Av. São Joaquim, 234',
         cidade: 'Sorocaba'
@@ -23,7 +24,7 @@ const contatos = [
         id: 3,
         nome: 'Fernando Leonid',
         celular: '11 9 1112-3333',
-        foto: './img/fernando-leonid.jpg',
+        foto: '../img/fernando-leonid.jpg',
         email: 'fernando@gmail.com',
         endereco: 'Rua dos padres, 555',
         cidade: 'Osasco'
@@ -54,12 +55,13 @@ function preencherFormulario(){
     document.getElementById('celular').value = contato.celular
     document.getElementById('endereco').value = contato.endereco
     document.getElementById('cidade').value = contato.cidade
+    document.getElementById('imagePreview').src = contato.foto
 }
 
 preencherFormulario()
 
-
-
+document.getElementById('editar').addEventListener('click', habilitarFormulario)
+document.getElementById('inputFile').addEventListener('change', () => preview('inputFile', 'imagePreview'))
 
 
 
