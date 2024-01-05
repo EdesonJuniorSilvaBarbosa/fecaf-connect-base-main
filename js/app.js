@@ -59,7 +59,6 @@ function carregarCards(){
 
 }
 
-
 carregarCards()
 
 document.getElementById('novo-contato').addEventListener('click', () => localStorage.clear())

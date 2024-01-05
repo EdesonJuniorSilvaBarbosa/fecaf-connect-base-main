@@ -36,8 +36,19 @@ function buscarContato(){
     return contato 
 }
 
+const habilitarCampo = campo => campo.disabled = false
+const trocarBotao = botao => botao.classList.toggle('oculto')
+function habilitarFormulario(){
+    document.querySelectorAll('input').forEach(habilitarCampo)
+    document.querySelectorAll('.button').forEach(trocarBotao)
+}
+
 function preencherFormulario(){
     const contato = buscarContato()
+    if (contato == undefined){
+        habilitarFormulario()
+        return false
+    }
     document.getElementById('nome').value = contato.nome
     document.getElementById('email').value = contato.email
     document.getElementById('celular').value = contato.celular
