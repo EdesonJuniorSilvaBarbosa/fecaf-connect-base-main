@@ -1,6 +1,7 @@
 'user strict'
 import { preview } from "./preview.js"
-import { getContato, postContato, putContato } from "./contatos.js"
+import { getContato, postContato, putContato, deleteContato } from "./contatos.js"
+import { uploadImgur } from "./imgur.js"
 
 async function buscarContato(id){
     const contato = await getContato(id)
@@ -35,14 +36,16 @@ async function preencherFormulario(){
     }
 }
 
-function salvarContato({target}){
+async function salvarContato({target}){
+    const file = document.getElementById('inputFile')
+    const linkImage = await uploadImgur(file.files[0])
     const contato = {
         "nome": document.getElementById('nome').value,
         "email": document.getElementById('email').value,
         "celular": document.getElementById('celular').value,
         "endereco": document.getElementById('endereco').value,
         "cidade": document.getElementById('cidade').value,
-        "foto": document.getElementById('imagePreview').src
+        "foto": linkImage
     }
 
     if(target.dataset.tipo == 'novo'){
@@ -56,11 +59,23 @@ function salvarContato({target}){
     }
 }
 
+async function deletarContato(){
+    const id = localStorage.getItem('id')
+    const nome = document.getElementById('nome').value
+    const response = confirm (`Deseja excluir o contato ${nome}?`)
+
+    if(response){
+        await deleteContato(id)
+        window.location.href = '/'
+    }
+}
+
 preencherFormulario()
 
 document.getElementById('editar').addEventListener('click', habilitarFormulario)
 document.getElementById('inputFile').addEventListener('change', () => preview('inputFile', 'imagePreview'))
 document.getElementById('salvar').addEventListener('click', salvarContato)
+document.getElementById('deletar').addEventListener('click', deletarContato)
 
 
 

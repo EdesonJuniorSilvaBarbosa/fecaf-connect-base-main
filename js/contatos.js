@@ -44,6 +44,15 @@ export async function putContato(contato){
     return response.ok
 }
 
+export async function deleteContato(id){
+    const url = `https://backend-fecaf-connect.vercel.app/contatos/${id}`
+    const options = {
+        method: 'DELETE'
+    }
+
+    const response = await fetch(url, options)
+    return response.ok
+}
 
 
 
